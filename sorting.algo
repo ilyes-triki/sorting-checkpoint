@@ -1,0 +1,30 @@
+ALGORITHM algo_sort
+VAR
+    arr : ARRAY_OF INTEGER [100];
+    n, j, aux, count : INTEGER;
+    i : INTEGER := 1;
+BEGIN
+    Write("Give the number of the elements you want to sort : ");
+    Read(n);
+    Write("Give the first element : ");
+    Read(arr[0]);
+    REPEAT
+        Write("Give the next element : ");
+        Read(arr[i]);
+        IF (arr[i] < arr[i-1]) THEN
+        aux := arr[i];
+        count := i;
+            FOR j FROM 0 TO i-1 DO
+                IF (arr[j] > arr[i]) THEN
+                    BREAK;
+                END_IF
+            END_FOR
+            WHILE (count <> j ) DO
+                arr[count] := arr[count - 1];
+                count := count - 1;
+            END_WHILE
+            arr[j] := aux;
+        END_IF
+        i := i + 1;
+    UNTIL (i < n-1)
+END
